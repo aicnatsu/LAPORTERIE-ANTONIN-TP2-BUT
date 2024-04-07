@@ -39,11 +39,6 @@ async function insertOne(collectionName, query) {
 
 async function insertMany(collectionName, documents, options = {}) {
     try {
-        documents = [
-            { name: 'doc1', value: 'value1' },
-            { name: 'doc2', value: 'value2' },
-            // plus de documents ici
-        ];
         const collection = getCollection(collectionName);
         const result = await collection.insertMany(documents, options);
         return result;
@@ -56,9 +51,6 @@ async function insertMany(collectionName, documents, options = {}) {
 
 async function updateOne(collectionName,filter, update, options = {}) {
     try {
-        filter = { name: 'doc1' };
-        update = { $set: { value: 'new value' } };
-
         const collection = getCollection(collectionName);
         const result = await collection.updateOne(filter, update, options);
         return result;
@@ -72,9 +64,6 @@ async function updateOne(collectionName,filter, update, options = {}) {
 
 async function updateMany(collectionName, filter, update, options = {}) {
     try {
-        const filter = { status: 'pending' };
-        const update = { $set: { status: 'processed' } };
-
         const collection = getCollection(collectionName);
         const result = await collection.updateMany(filter, update, options);
         return result;
@@ -87,9 +76,6 @@ async function updateMany(collectionName, filter, update, options = {}) {
 
 async function replace (collectionName,filter, documents, options = {}){
     try {
-        filter = { name: 'doc1' };
-        documents = { name: 'doc1', value: 'new value' };
-
         const collection = getCollection(collectionName);
         const result = await collection.replaceOne(filter, documents, options);
         return result;
